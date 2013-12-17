@@ -24,11 +24,21 @@ catchError:true,
 // Karma serves files from '/base'
     baseUrl: '/base/src',
     paths: {
-           'jquery': '../tests/lib/jquery'
-         , 'sinon' : '../tests/lib/sinon'
+           'jquery'         : '../tests/lib/jquery'
+         , 'jasminejquery' :'../tests/lib/jasmine-jquery'
+         , 'sinon'          : '../tests/lib/sinon'
 
     },
-
+shim: {
+    'jasminejquery': {
+        //These script dependencies should be loaded before loading
+        //backbone.js
+        deps: [ 'jquery'],
+        //Once loaded, use the global 'Backbone' as the
+        //module value.
+        exports: 'jasminejquery'
+    }
+},
 
     // ask Require.js to load these files (all our tests)
     deps: tests,
