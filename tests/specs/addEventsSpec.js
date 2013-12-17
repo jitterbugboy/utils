@@ -1,11 +1,14 @@
-define(['events/addEvents', 'events/trigger', 'sinon'], function (addEvents, trigger, sinon) {
-
+define(['events/addEvents', 'events/trigger', 'sinon','jasminejquery'], function (addEvents, trigger, sinon, jasminejquery) {
 
     describe('Events-addEvents testSuite', function () {
         var div
             , handler;
 
         beforeEach(function () {
+            var f = jasminejquery.getFixtures();
+            f.fixturesPath = 'base';
+            f.load('tests/fixtures/sample.html');
+
             div = document.createElement('div');
             document.getElementsByTagName('body')[0].appendChild(div);
             handler = sinon.spy();
@@ -42,6 +45,11 @@ define(['events/addEvents', 'events/trigger', 'sinon'], function (addEvents, tri
             //kinda ducktyping here - idk how to check for the actual eventobject in another way
             target = spyCall.args[0].target;
             expect(target).toBe(div);
+        });
+
+        it('can find jasmine', function () {
+            console.log(jasminejquery.getFixtures());
+           expect(jasminejquery.getFixtures()).toBeDefined();
         });
 
         it('can bubble',function () {

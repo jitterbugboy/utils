@@ -14,14 +14,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        {pattern: 'tests/lib/jquery.js', included: false},
+        {pattern: 'tests/lib/jasmine-jquery.js', included: false},
+        {pattern: 'tests/lib/sinon.js', included: false},
+        {pattern: 'tests/fixtures/**/*.html', included: false},
         {pattern: 'lib/**/*.js', included: false},
         {pattern: 'src/**/*.js', included: false},
         {pattern: 'tests/**/*Spec.js', included: false},
-        {pattern: 'tests/lib/**/*.js', included: false},
-
-       // {pattern: 'test/lib/jasmine-jquery.js', included: false},
-       // {pattern: 'test/lib/myTeset.js', included: false},
-
         'tests/test-main.js'
     ],
 
