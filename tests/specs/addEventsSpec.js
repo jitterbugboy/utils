@@ -1,4 +1,4 @@
-define(['events/addEvents', 'events/trigger', 'sinon','jasminejquery'], function (addEvents, trigger, sinon, jasminejquery) {
+define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], function (addEvents, trigger, sinon, jasminejquery) {
 
     describe('Events-addEvents testSuite', function () {
         var div
@@ -6,18 +6,17 @@ define(['events/addEvents', 'events/trigger', 'sinon','jasminejquery'], function
 
         beforeEach(function () {
             var f = jasminejquery.getFixtures();
-            f.fixturesPath = 'base';
-            f.load('tests/fixtures/sample.html');
-
-            div = document.createElement('div');
-            document.getElementsByTagName('body')[0].appendChild(div);
+            f.fixturesPath = 'base/tests/fixtures/';
+            f.load('nestedDiv.html');
+            div =  document.getElementById('inner');
             handler = sinon.spy();
         });
+
         afterEach(function () {
-            document.body.removeChild(div);
             div = null;
             handler.reset();
         });
+
 
 
         it('can add click event to div sinon', function () {
@@ -40,19 +39,29 @@ define(['events/addEvents', 'events/trigger', 'sinon','jasminejquery'], function
                 , target;
 
             addEvents(div, 'click', handler);
-            div.click();
+            trigger(div, 'click');
             spyCall = handler.getCall(0);
             //kinda ducktyping here - idk how to check for the actual eventobject in another way
             target = spyCall.args[0].target;
             expect(target).toBe(div);
         });
 
-        it('can find jasmine', function () {
-            console.log(jasminejquery.getFixtures());
-           expect(jasminejquery.getFixtures()).toBeDefined();
-        });
-
         it('can bubble',function () {
+            var handlerOuter = sinon.spy()
+                ,outerDiv = $('#outer')[0];
+            addEvents(outerDiv,'click', handlerOuter);
+            addEvents(div,'click', handler);
+            //trigger(div, 'click');
+
+            $(div).trigger('click')
+            //trigger(div, 'click');
+
+            expect(handlerOuter.calledOnce).toBe(true);
+            expect(handler.calledOnce).toBe(true);
+            //expect(handler.calledBefore(handlerOuter)).toBe(true);
+
+
+
 
         });
 
