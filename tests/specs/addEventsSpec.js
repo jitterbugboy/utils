@@ -49,23 +49,33 @@ define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], functio
         it('can bubble',function () {
             var handlerOuter = sinon.spy()
                 ,outerDiv = $('#outer')[0];
-            addEvents(outerDiv,'click', handlerOuter);
+            addEvents(outerDiv,'click', handlerOuter, false);
             addEvents(div,'click', handler);
-            //trigger(div, 'click');
-
-            $(div).trigger('click')
-            //trigger(div, 'click');
-
+            trigger(div, 'click');
             expect(handlerOuter.calledOnce).toBe(true);
             expect(handler.calledOnce).toBe(true);
-            //expect(handler.calledBefore(handlerOuter)).toBe(true);
 
-
-
+            expect(handler.calledBefore(handlerOuter)).toBe(true);
 
         });
 
-        it('can propegate', function () {
+        it('can catch capture', function () {
+            var handlerOuter = sinon.spy()
+                ,outerDiv = $('#outer')[0];
+
+            addEvents(outerDiv,'click', handlerOuter, true);
+            addEvents(div,'click', handler);
+            trigger(div, 'click');
+
+            expect(handlerOuter.calledOnce).toBe(true);
+            expect(handler.calledOnce).toBe(true);
+            expect(handlerOuter.calledBefore(handler)).toBe(true);
+
+
+
+
+
+
 
         });
 

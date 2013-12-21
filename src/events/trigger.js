@@ -5,8 +5,8 @@
 
 
     var trigger = function (elm, event, bubble, cancel) {
-        var bubbles     = bubble || false
-            , cancancel = cancel || true
+        var bubbles     = bubble ? bubble : true
+            , cancancel = cancel ? cancel : true
             , triggerEvent;
 
         var createMouseEvent = function (type) {
