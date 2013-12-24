@@ -70,15 +70,7 @@ define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], functio
             expect(handlerOuter.calledOnce).toBe(true);
             expect(handler.calledOnce).toBe(true);
             expect(handlerOuter.calledBefore(handler)).toBe(true);
-
-
-
-
-
-
-
         });
-
 
     });
 });

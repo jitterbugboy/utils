@@ -21,9 +21,9 @@
         var fallback = function () {
         };
 
-        var eventMapper = {click: createMouseEvent(event), fallback: fallback};
+        var eventMapper = {click: createMouseEvent, fallback: fallback};
         triggerEvent = eventMapper[event] || eventMapper.fallback;
-
+        triggerEvent(event);
     };
 
      //expose the object to amd or exports
