@@ -80,7 +80,7 @@ module.exports = function(config) {
     // - IE (only Windows)
       //'C:/Program Files (x86)/Mozilla Firefox/firefox.exe'
 //WIN    browsers: ['Chrome' , 'Safari',  'IE' , 'C:/Program Files (x86)/Mozilla Firefox/firefox.exe' /* ,  'C:/Program Files (x86)/Opera/launcher.exe' /*, 'ChromeCanary'*/],
-      browsers: ['Chrome' , 'Safari',  'Firefox'],
+      browsers: ['Chrome' , 'Safari' , 'Firefox', 'Opera'],
 
 
 
