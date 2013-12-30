@@ -4,6 +4,8 @@ define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], functio
         var div
             , handler;
 
+
+
         beforeEach(function () {
             var f = jasminejquery.getFixtures();
             f.fixturesPath = 'base/tests/fixtures/';
@@ -16,7 +18,6 @@ define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], functio
             div = null;
             handler.reset();
         });
-
 
 
         it('can add click event to div sinon', function () {
@@ -71,6 +72,8 @@ define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], functio
             expect(handler.calledOnce).toBe(true);
             expect(handlerOuter.calledBefore(handler)).toBe(true);
         });
+
+
 
     });
 });
