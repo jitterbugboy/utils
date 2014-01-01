@@ -34,8 +34,9 @@ module.exports = function(config) {
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'
-    //    ,'coverage'
+    reporters: [
+        'progress'
+      , 'coverage'
     ],
 
 
@@ -47,8 +48,8 @@ module.exports = function(config) {
       },
 
       coverageReporter: {
-          type : 'text'
-          , dir : 'test/coverage/'
+          //type : 'text'
+          dir : 'tests/coverage/'
       },
 
 
@@ -80,7 +81,7 @@ module.exports = function(config) {
     // - IE (only Windows)
       //'C:/Program Files (x86)/Mozilla Firefox/firefox.exe'
 //WIN    browsers: ['Chrome' , 'Safari',  'IE' , 'C:/Program Files (x86)/Mozilla Firefox/firefox.exe' /* ,  'C:/Program Files (x86)/Opera/launcher.exe' /*, 'ChromeCanary'*/],
-      browsers: ['Chrome' , 'Safari' , 'Firefox', 'Opera'],
+      browsers: ['Chrome' , 'Safari' , 'Firefox'/*, 'Opera'*/],
 
 
 

@@ -149,5 +149,15 @@ var linkURL = function () {
         });
 
 
+        /**
+         * Might need to do something different!
+         */
+
+        it('does nothing when using not existing event type', function () {
+            expect( function () {trigger(div,'noEvent')}).not.toThrow();
+
+        });
+
+
     });//describe
 });//define

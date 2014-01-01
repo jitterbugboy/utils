@@ -18,8 +18,11 @@
             elm.dispatchEvent(click_ev);
 
         };
-        var fallback = function () {
-        };
+
+        /**
+         * Might need to do something different - maybe allow custom event types!
+         */
+        var fallback = function () {};
 
         var eventMapper = {click: createMouseEvent, fallback: fallback};
         triggerEvent = eventMapper[event] || eventMapper.fallback;
