@@ -11,9 +11,8 @@
      */
     var addEvents = function (element, event, fn, useCapture) {
             var useCapture = useCapture || false;
-            element.addEventListener(event, function (event) {
-                fn.call(this, event);
-            }, useCapture);
+            element.addEventListener(event, function (event) { fn.call(this, event);}
+             , useCapture);
         };
 
     //expose the object to amd or exports

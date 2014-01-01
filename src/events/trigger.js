@@ -5,8 +5,8 @@
 
 
     var trigger = function (elm, event, bubble, cancel) {
-        var bubbles     = bubble || false
-            , cancancel = cancel || true
+        var bubbles     = bubble !== undefined ? bubble : true
+            , cancancel = cancel !== undefined ? cancel : true
             , triggerEvent;
 
         var createMouseEvent = function (type) {
@@ -21,9 +21,9 @@
         var fallback = function () {
         };
 
-        var eventMapper = {click: createMouseEvent(event), fallback: fallback};
+        var eventMapper = {click: createMouseEvent, fallback: fallback};
         triggerEvent = eventMapper[event] || eventMapper.fallback;
-
+        triggerEvent(event);
     };
 
      //expose the object to amd or exports

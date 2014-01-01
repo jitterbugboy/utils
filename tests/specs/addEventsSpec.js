@@ -1,17 +1,20 @@
-define(['events/addEvents', 'events/trigger', 'sinon'], function (addEvents, trigger, sinon) {
-
+define(['events/addEvents', 'events/trigger', 'sinon', 'jasminejquery'], function (addEvents, trigger, sinon, jasminejquery) {
 
     describe('Events-addEvents testSuite', function () {
         var div
             , handler;
 
+
+
         beforeEach(function () {
-            div = document.createElement('div');
-            document.getElementsByTagName('body')[0].appendChild(div);
+            var f = jasminejquery.getFixtures();
+            f.fixturesPath = 'base/tests/fixtures/';
+            f.load('nestedDiv.html');
+            div =  document.getElementById('inner');
             handler = sinon.spy();
         });
+
         afterEach(function () {
-            document.body.removeChild(div);
             div = null;
             handler.reset();
         });
@@ -37,7 +40,7 @@ define(['events/addEvents', 'events/trigger', 'sinon'], function (addEvents, tri
                 , target;
 
             addEvents(div, 'click', handler);
-            div.click();
+            trigger(div, 'click');
             spyCall = handler.getCall(0);
             //kinda ducktyping here - idk how to check for the actual eventobject in another way
             target = spyCall.args[0].target;
@@ -45,12 +48,31 @@ define(['events/addEvents', 'events/trigger', 'sinon'], function (addEvents, tri
         });
 
         it('can bubble',function () {
+            var handlerOuter = sinon.spy()
+                ,outerDiv = $('#outer')[0];
+            addEvents(outerDiv,'click', handlerOuter, false);
+            addEvents(div,'click', handler);
+            trigger(div, 'click');
+            expect(handlerOuter.calledOnce).toBe(true);
+            expect(handler.calledOnce).toBe(true);
+
+            expect(handler.calledBefore(handlerOuter)).toBe(true);
 
         });
 
-        it('can propegate', function () {
+        it('can catch capture', function () {
+            var handlerOuter = sinon.spy()
+                ,outerDiv = $('#outer')[0];
 
+            addEvents(outerDiv,'click', handlerOuter, true);
+            addEvents(div,'click', handler);
+            trigger(div, 'click');
+
+            expect(handlerOuter.calledOnce).toBe(true);
+            expect(handler.calledOnce).toBe(true);
+            expect(handlerOuter.calledBefore(handler)).toBe(true);
         });
+
 
 
     });
