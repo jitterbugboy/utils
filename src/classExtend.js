@@ -6,7 +6,6 @@ define(function () {
      * @param {Class} childObj the class to extend with parents methods
      */
     var classExtend = function (parentObj, childObj) {
-
         var tmpObj = function () {
         };
         tmpObj.prototype = parentObj.prototype;
