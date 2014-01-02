@@ -103,7 +103,6 @@ var linkURL = function () {
             //setup events with capture false
 
             addEvents(anchor, 'click', obj.localHandler);
-
             trigger(anchor, 'click',true);
 
             //TODO find a fix
@@ -111,11 +110,8 @@ var linkURL = function () {
                 return false;
             }
 
-
             expect(spy.calledOnce).toBe(true);
             expect(location.hash).toBe('');
-
-
         });
 
 
