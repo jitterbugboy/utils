@@ -8,7 +8,7 @@ define(['classExtend', 'jasminejquery' , 'sinon'], function (classExtend, jasmin
             }
             , Child: function () {}
             , SuperCallChild: function (args) {
-                this.super.call(this, args);
+                this._super.call(this, args);
 
             }
         };
