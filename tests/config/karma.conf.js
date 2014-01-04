@@ -28,7 +28,6 @@ module.exports = function(config) {
     // list of files to exclude
     exclude: [
       'src/main.js'
-      //, 'src/app.js'
     ],
 
 
@@ -81,8 +80,15 @@ module.exports = function(config) {
     // - IE (only Windows)
       //'C:/Program Files (x86)/Mozilla Firefox/firefox.exe'
 //WIN    browsers: ['Chrome' , 'Safari',  'IE' , 'C:/Program Files (x86)/Mozilla Firefox/firefox.exe' /* ,  'C:/Program Files (x86)/Opera/launcher.exe' /*, 'ChromeCanary'*/],
-      browsers: ['Chrome' , 'Safari' , 'Firefox'/*, 'Opera'*/],
-
+      browsers: [
+          'Chrome'
+          , 'Safari'
+          , 'Firefox'
+          , 'Opera'
+          , 'IE8 - WinXP'
+          , 'IE9 - Win7'
+          , 'IE10 - Win7'
+          , 'IE11 - Win7'],
 
 
     // If browser does not capture in given timeout [ms], kill it
