@@ -58,8 +58,8 @@ module.exports = function (config) {
 		},
 
 		coverageReporter : {
-			//type : 'text'
-			//     dir : 'tests/coverage/'
+			type : 'text',
+			dir  : 'tests/coverage/'
 		},
 
 
