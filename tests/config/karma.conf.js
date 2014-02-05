@@ -34,8 +34,10 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
     reporters: [
-        'progress'
-      , 'coverage'
+  //      'progress'
+  //    , 'coverage'
+			, 'dots'
+
     ],
 
 
@@ -43,12 +45,12 @@ module.exports = function(config) {
           // source files, that you wanna generate coverage for
           // do not include tests or libraries
           // (these files will be instrumented by Istanbul)
-          'src/**/*.js': ['coverage']
+//          'src/**/*.js': ['coverage']
       },
 
       coverageReporter: {
           //type : 'text'
-          dir : 'tests/coverage/'
+     //     dir : 'tests/coverage/'
       },
 
 
@@ -82,13 +84,14 @@ module.exports = function(config) {
 //WIN    browsers: ['Chrome' , 'Safari',  'IE' , 'C:/Program Files (x86)/Mozilla Firefox/firefox.exe' /* ,  'C:/Program Files (x86)/Opera/launcher.exe' /*, 'ChromeCanary'*/],
       browsers: [
           'Chrome'
-          , 'Safari'
-          , 'Firefox'
-          , 'Opera'
-          , 'IE8 - WinXP'
+      //    , 'Safari'
+       //   , 'Firefox'
+       //   , 'Opera'
+      /*    , 'IE8 - WinXP'
           , 'IE9 - Win7'
           , 'IE10 - Win7'
-          , 'IE11 - Win7'],
+          , 'IE11 - Win7'
+          */],
 
 
     // If browser does not capture in given timeout [ms], kill it

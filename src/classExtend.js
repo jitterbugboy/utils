@@ -14,6 +14,7 @@ define(function () {
         childClass.prototype.constructor = childClass;
         childClass.prototype._super = parentClass;
 
+
         //if ever needed - test if it makes it possible to overide all instance
         //childClass.prototype.superClass = parentClass.prototype;
         //consider also :

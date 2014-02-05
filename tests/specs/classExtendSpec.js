@@ -67,7 +67,6 @@ define(['classExtend', 'jasminejquery' , 'sinon'], function (classExtend, jasmin
 
             expect(spy.calledOnce).toBeTruthy();
             expect(newSuperChild.prop).toBe(1);
-
         });
 
 

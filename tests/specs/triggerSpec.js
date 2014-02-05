@@ -66,12 +66,16 @@ var linkURL = function () {
             var anchor  = document.createElement('a')
                 , hash  = "test"
                 , obj   = {
+
                     localHandler : function (e) {
+
                                 e.preventDefault();
                             }
+
                            }
             , spy   = sinon.spy(obj ,'localHandler');
             anchor.href = linkURL() + "#" + hash;
+
             //setup events with capture false
 
             addEvents(anchor, 'click', obj.localHandler);
@@ -80,13 +84,16 @@ var linkURL = function () {
 
             //TODO find a fix
             if (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
+
                 return false;
+
             }
 
 
-            expect(spy.calledOnce).toBe(true);
-            expect(location.hash).toBe('#'+hash);
 
+            expect(spy.calledOnce).toBe(true);
+
+            expect(location.hash).toBe('#'+hash);
 
         });
 
@@ -95,22 +102,30 @@ var linkURL = function () {
                 , hash  = "test"
                 , obj   = {
                     localHandler : function (e) {
+
                         e.preventDefault();
+
                     }
+
                 }
+
                 , spy   = sinon.spy(obj ,'localHandler');
+
             anchor.href = linkURL() + "#" + hash;
             //setup events with capture false
 
             addEvents(anchor, 'click', obj.localHandler);
+
             trigger(anchor, 'click',true);
 
             //TODO find a fix
             if (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
+
                 return false;
             }
 
             expect(spy.calledOnce).toBe(true);
+
             expect(location.hash).toBe('');
         });
 
@@ -119,8 +134,11 @@ var linkURL = function () {
          * CLICK
          **************/
         it('MOUSE-CLICK- can trigger a jquery bound CLICK event', function () {
+
             $(div).on('click', handler);
+
             trigger(div, 'click');
+
             expect(handler.calledOnce).toBe(true);
         });
 
@@ -134,12 +152,16 @@ var linkURL = function () {
             // this is the ugly solution! - anyways works in current ff version (26)
             //TODO find a fix
             if (navigator.userAgent.toLowerCase().indexOf('firefox') !== -1) {
+
                 return false;
             }
 
             anchor.href = linkURL() + "#" + hash; //+new Date();
+
             trigger(anchor, 'click');
+
             expect(location.href.split('#')[1]).toBe(hash);
+
             location.hash = '';
 
         });
