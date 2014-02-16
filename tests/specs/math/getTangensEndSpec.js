@@ -1,10 +1,10 @@
 define(
   [
-    'getObjectLength'
+    'math/getTangensEnd'
 
-  ], function (getObjectLength) {
+  ], function (getTangensEnd) {
 
-    describe('getObjectLength testSuite', function () {
+    describe('getTangensEnd testSuite', function () {
 
       /////////////////////////////////////
       //////////SETUP//////////////////////
@@ -14,7 +14,6 @@ define(
 
       beforeEach(function () {
 
-        testObj = {prop1 : "", prop2 : 2, prop3 : 3};
       });
 
       //TEAR DOWN
@@ -28,23 +27,71 @@ define(
       //////////////////////////////////////
 
 
-      it('can get number of properties in object', function () {
+      it('can get position of 0 degrees angle', function () {
 
-        Object.prototype.test = "test";
-        expect(getObjectLength(testObj)).toEqual(3);
+        expect(getTangensEnd( 0 ,100)).toEqual({x:100, y:0});
+
+      });
+
+
+      it('can get position of 0 degrees angle and negative tangens', function () {
+
+        expect(getTangensEnd( 0 ,-100)).toEqual({x:-100, y:0});
 
       });
 
 
-      it('does not count inherited properties', function () {
+      it('can get position of 360 degrees angle and negative tangens', function () {
 
-        Object.prototype.test = "test";
-
-        expect(getObjectLength(testObj)).toEqual(3);
-
-        delete Object.prototype.test;
+        expect(getTangensEnd( 360 ,-100)).toEqual({x:-100, y:0});
 
       });
+
+
+      it('can get position of 90 degrees angle ', function () {
+        var vector = getTangensEnd( 90 ,100);
+
+        expect(vector.x).toBeCloseTo(0 ,9);
+        expect(vector.y).toBe(-100);
+
+      });
+
+      it('can get position of -90 degrees angle ', function () {
+        var vector = getTangensEnd( -90 ,100);
+
+        expect(vector.x).toBeCloseTo(0 ,9);
+        expect(vector.y).toBe(100);
+
+      });
+
+      it('can get position of 270 degrees angle ', function () {
+        var vector = getTangensEnd( 270 ,100);
+
+        expect(vector.x).toBeCloseTo(0 ,9);
+        expect(vector.y).toBe(100);
+
+      });
+
+
+
+      it('can get position of 180 degrees angle ', function () {
+        var vector = getTangensEnd( 180 ,100);
+
+        expect(vector.x).toBe(-100);
+        expect(vector.y).toBeCloseTo(0,9);
+
+      });
+
+
+
+      it('can get position of 45 degrees angle 2 ', function () {
+        var vector = getTangensEnd( 45 , 100);
+
+        expect(vector.x).toBeCloseTo(70.7, 1);
+        expect(vector.y).toBeCloseTo(-70.7, 1);
+
+      });
+
 
 
     });//describe
