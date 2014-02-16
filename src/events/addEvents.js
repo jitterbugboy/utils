@@ -1,7 +1,7 @@
 (function (exports) {
     "use strict";
     //TODO make cross browser / Mobile
-    //TODO create unittest
+
     /**
      * @description adds eventlisteners to a given element
      * @param {Object} element the DOM node to attach the event to

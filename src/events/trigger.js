@@ -1,7 +1,7 @@
 (function (exports) {
     "use strict";
     //TODO make cross browser / Mobile
-    //TODO create unittest
+
 
 
     var trigger = function (elm, event, bubble, cancel) {
