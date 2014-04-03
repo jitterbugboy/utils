@@ -1,10 +1,9 @@
-define(
-  [
+define([
     "./getRadians"
   ], function (getRadians) {
     "use strict";
-    //TODO unittest
-    var TO_RADIANS = Math.PI / 180;
+
+    var cachedRotation;
     /**
      * @description returns the Tangens position
      * @param {number} rotation
@@ -12,12 +11,12 @@ define(
      * @return {{x,y} }
      */
     var getTangensEnd = function (rotation, distance) {
-
+      cachedRotation = getRadians(rotation);
       //http://stackoverflow.com/questions/3309617/calculating-degrees-between-2-points-with-inverse-y-axis
 
       return {
-        x : Math.cos(getRadians(rotation)) * distance
-        , y : Math.sin(getRadians(rotation)) * distance *-1
+        x : Math.cos(cachedRotation) * distance,
+        y : Math.sin(cachedRotation) * distance * -1
       };
     };
     return getTangensEnd;
