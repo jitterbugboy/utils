@@ -26,13 +26,6 @@ define(
       ////////////SPEC//////////////////////
       //////////////////////////////////////
 
-
-      it('can get number radians of 90 degrees', function () {
-        expect(getRadians(90)).toBe(Math.PI / 180 * 90);
-
-      });
-
-
       it('can get number radians of 0 degrees', function () {
         expect(getRadians(0)).toBe(0);
 
@@ -43,21 +36,39 @@ define(
 
       });
 
+      //common chart values
+      it('can match chart values deg' ,function () {
+        expect(getRadians(30)).toBe(Math.PI / 6);
+        expect(getRadians(45)).toBe(Math.PI / 4);
+        expect(getRadians(60)).toBe(Math.PI / 3);
+        expect(getRadians(90)).toBe(Math.PI / 2);
+        expect(getRadians(120)).toBe(2*Math.PI / 3);
+        expect(getRadians(135)).toBe(3*Math.PI / 4);
 
-      it('can get number radians of 400 degrees', function () {
-        expect(getRadians(400)).toBe(Math.PI / 180 * 40);
-
-      });
-
-
-      it('can get number radians of negative degrees', function () {
-        expect(getRadians(-60)).toBe(Math.PI / 180 * (360 - 60));
-
-      });
+        expect(getRadians(30 + 360)).toBe(Math.PI / 6);
+        expect(getRadians(45 + 360)).toBe(Math.PI / 4);
+        expect(getRadians(60 + 360)).toBe(Math.PI / 3);
+        expect(getRadians(90 + 360)).toBe(Math.PI / 2);
+        expect(getRadians(120 + 360)).toBe(2*Math.PI / 3);
+        expect(getRadians(135 + 360)).toBe(3*Math.PI / 4);
 
 
-      it('can match positive and negative bumbers', function () {
-        expect(getRadians(-1)).toBe(getRadians(359));
+
+
+        expect(getRadians(-30)).toBe((Math.PI / 6) *-1);
+        expect(getRadians(-45)).toBe((Math.PI / 4) *-1);
+        expect(getRadians(-60)).toBe((Math.PI / 3)*-1);
+        expect(getRadians(-90)).toBe((Math.PI / 2)*-1);
+        expect(getRadians(-120)).toBe((2*Math.PI / 3)*-1);
+        expect(getRadians(-135)).toBe((3*Math.PI / 4)*-1);
+
+
+        expect(getRadians(-390)).toBe((Math.PI / 6) *-1);
+        expect(getRadians(-405)).toBe((Math.PI / 4) *-1);
+        expect(getRadians(-420)).toBe((Math.PI / 3)*-1);
+        expect(getRadians(-90 + -360)).toBe((Math.PI / 2)*-1);
+        expect(getRadians(-120 + -360)).toBe((2*Math.PI / 3)*-1);
+        expect(getRadians(-135 + -360)).toBe((3*Math.PI / 4)*-1);
 
       });
 

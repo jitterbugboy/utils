@@ -9,7 +9,7 @@
      */
     var getRadians = function (rotation) {
 
-        return rotation >= 0 ? (rotation % 360) * TO_RADIANS  : (360 + rotation ) % 360 * TO_RADIANS  ;
+      return  (rotation % 360) * TO_RADIANS;
     };
 
     //expose the object to amd or exports
