@@ -9,7 +9,9 @@ requirejs.config({
  , trigger : require("./events/trigger")
  , classExtend : require("./classExtend"),
   math : {
-    getTangensEnd : require("./math/getTangensEnd")
+    getTangensEnd : require("./math/getTangensEnd"),
+    getRadians: require("./math/getRadians")
+
   }
 
  };

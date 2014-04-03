@@ -97,6 +97,7 @@ define(
         var vector = getTangensEnd( 45 , 100),
           vector2 = getTangensEnd( 45 , 100);
 
+
         expect(vector.x).toBe(vector2.x);
         expect(vector.y).toBe(vector2.y );
 
