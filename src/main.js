@@ -5,9 +5,12 @@ requirejs.config({
  define(function (require) {
  "use strict";
  var utils = {
- addEvents : require("./events/addEvents")
- , trigger : require("./events/trigger")
- , classExtend : require("./classExtend"),
+
+   classExtend : require("./classExtend"),
+   events : {
+     addEvents : require("./events/addEvents")
+     , trigger : require("./events/trigger")
+   },
   math : {
     getTangensEnd : require("./math/getTangensEnd"),
     getRadians: require("./math/getRadians")
